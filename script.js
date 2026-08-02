@@ -1,5 +1,14 @@
 // Conexão Socket.IO com o servidor local/remoto
-const socket = io();
+let socket = null;
+if (typeof io !== 'undefined') {
+  try {
+    socket = io();
+  } catch (e) {
+    console.warn("Socket.IO não inicializado.");
+  }
+} else {
+  console.warn("Socket.IO não foi carregado. O tabuleiro será desenhado em modo offline.");
+}
 
 // Elementos do DOM
 const tabuleiroEl = document.getElementById('tabuleiro');
@@ -114,6 +123,8 @@ btnReiniciar.addEventListener('click', () => {
 });
 
 // Respostas do Servidor
+if(socket) 
+{
 socket.on('salaCriada', (dados) => {
   codigoSalaAtual = dados.salaId || dados.codigo;
   meuJogador = dados.jogador || 'brancas';
@@ -162,6 +173,7 @@ socket.on('atualizarTabuleiro', (estado) => {
     mensagemEl.textContent = estado.mensagem;
   }
 });
+}
 
 // Inicialização imediata do desenho
 desenharTabuleiro();
