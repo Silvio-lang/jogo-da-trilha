@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo da Trilha Online</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Jogo da Trilha Online</h1>
+
+    <!-- PAINEL DINÂMICO DE REDE -->
+    <div class="painel-rede">
+      <!-- Opções para quem ainda NÃO entrou em uma sala -->
+      <div id="controles-inicio" class="controles-inicio">
+        <button id="btn-criar-sala">Criar Sala Online</button>
+        <span class="divisor-ou">OU</span>
+        <div class="grupo-entrada">
+          <input type="text" id="input-sala" placeholder="CÓDIGO (Ex: A1B2)" maxlength="4">
+          <button id="btn-entrar-sala">Entrar na Sala</button>
+        </div>
+      </div>
+
+      <!-- Exibição limpa APÓS criar ou entrar na sala -->
+      <div id="info-sala-ativa" class="info-sala-ativa escondido">
+        <span id="texto-codigo-sala"></span>
+      </div>
+    </div>
+
+    <div id="mensagem" class="mensagem">Aguardando ação...</div>
+
+    <!-- TABULEIRO -->
+    <div id="tabuleiro" class="tabuleiro"></div>
+
+    <!-- CONTROLES ADICIONAIS -->
+    <div class="controles">
+      <button id="btn-reiniciar">Reiniciar Partida</button>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js?v=3"></script>
+</body>
+</html>

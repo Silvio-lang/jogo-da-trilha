@@ -1,0 +1,249 @@
+/* --- RESET E ESTILOS GERAIS --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0f172a;
+  color: #f8fafc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  max-width: 500px;
+  width: 100%;
+}
+
+h1 {
+  font-size: 1.8rem;
+  color: #ffffff;
+  text-align: center;
+}
+
+/* --- PAINEL DE REDE (BOTÕES E INPUT) --- */
+.painel-rede {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.grupo-entrada {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.painel-rede input {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #334155;
+  background-color: #1e293b;
+  color: #ffffff;
+  text-align: center;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.painel-rede input:focus {
+  border-color: #38bdf8;
+}
+
+.painel-rede button, .controles button {
+  padding: 8px 16px;
+  background-color: #38bdf8;
+  color: #0f172a;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.painel-rede button:hover, .controles button:hover {
+  background-color: #0284c7;
+  color: #ffffff;
+}
+
+.divisor-ou {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.mensagem {
+  font-weight: 600;
+  color: #4ade80;
+  text-align: center;
+  min-height: 24px;
+}
+
+/* --- TABULEIRO --- */
+.tabuleiro {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: #1e293b;
+  border: 3px solid #334155;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+/* --- CASAS / CIRCULOS DAS POSIÇÕES --- */
+.ponto {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  background-color: #334155;
+  border: 3px solid #cbd5e1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  z-index: 20;
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.ponto:hover {
+  transform: translate(-50%, -50%) scale(1.3);
+  background-color: #38bdf8;
+  border-color: #ffffff;
+}
+
+/* Peças colocadas nas casas */
+.ponto.peca-brancas {
+  background-color: #ffffff;
+  border-color: #cbd5e1;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
+}
+
+.ponto.peca-pretas {
+  background-color: #0f172a;
+  border-color: #38bdf8;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
+}
+
+/* --- BOTÃO REINICIAR --- */
+.controles button {
+  background-color: #ef4444;
+  color: #ffffff;
+}
+
+.controles button:hover {
+  background-color: #dc2626;
+}
+
+@media (min-width: 480px) {
+  .painel-rede {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.divisor-ou {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.mensagem {
+  font-weight: 600;
+  color: #4ade80;
+  text-align: center;
+  min-height: 24px;
+}
+
+/* --- TABULEIRO --- */
+.tabuleiro {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: #1e293b;
+  border: 3px solid #334155;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+}
+
+/* --- BOTÃO REINICIAR --- */
+.controles button {
+  background-color: #ef4444;
+  color: #ffffff;
+}
+
+.controles button:hover {
+  background-color: #dc2626;
+}
+
+@media (min-width: 480px) {
+  .painel-rede {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+/* Destaque para a peça selecionada na Fase de Movimentação */
+.ponto.selecionada {
+  border-color: #f59e0b !important;
+  box-shadow: 0 0 15px #f59e0b !important;
+  transform: translate(-50%, -50%) scale(1.3);
+}
+
+/* Efeito de Vitória para a mensagem */
+.mensagem.vitoria {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #f59e0b;
+  text-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+  animation: pulso 1.5s infinite;
+}
+
+@keyframes pulso {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* --- CONTROLES DINÂMICOS DE SALA --- */
+.controles-inicio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+@media (min-width: 480px) {
+  .controles-inicio {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.info-sala-ativa {
+  background-color: #1e293b;
+  border: 1px solid #38bdf8;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  color: #38bdf8;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+}
+
+.escondido {
+  display: none !important;
+}
