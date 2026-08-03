@@ -169,7 +169,7 @@ io.on('connection', (socket) => {
     // Seleção de Peça Própria
     if (sala.tabuleiro[pontoId] === jogador) {
       sala.pecaSelecionada = pontoId;
-      const modoTexto = podeVoar ? "🕊️ MODO VOO ATIVO! Clique em QUALQUER casa vaga." : "Clique em uma casa vizinha vaga conectada por linha.";
+      const modoTexto = podeVoar ? "🕊️ MODO VOO ATIVO! Pule para QUALQUER casa vaga.";
       io.to(salaId).emit('atualizarTabuleiro', {
         tabuleiro: sala.tabuleiro,
         turno: sala.turno,
@@ -197,7 +197,7 @@ io.on('connection', (socket) => {
             turno: sala.turno,
             fase: 'MOVIMENTACAO',
             pecaSelecionada: null,
-            mensagem: `TRILHA FORMADA! Escolha uma peça do adversário para remover!`
+            mensagem: `TRILHA FORMADA! Remova uma peça do adversário!`
           });
         } else {
           sala.turno = jogador === 'brancas' ? 'pretas' : 'brancas';
@@ -210,7 +210,7 @@ io.on('connection', (socket) => {
           });
         }
       } else {
-        socket.emit('erro', 'Movimento inválido! A casa precisa estar conectada por uma linha.');
+        socket.emit('erro', 'Movimento inválido!');
       }
     }
   });
@@ -229,7 +229,7 @@ io.on('connection', (socket) => {
         turno: sala.turno,
         fase: 'COLOCACAO',
         pecaSelecionada: null,
-        mensagem: 'Partida reiniciada. Fase de Colocação (Vez das BRANCAS).'
+        mensagem: 'Iniciado! Fase de Colocação (Vez das BRANCAS).'
       });
     }
   });
