@@ -143,6 +143,7 @@ socket.on('atualizarTabuleiro', (estado) => {
   // Limpa o tabuleiro
   document.querySelectorAll('.ponto').forEach(ponto => {
     ponto.className = 'ponto';
+    ponto.blur(); // <-- Esse é o segredo que força o celular a "soltar" o toque!
   });
 
   // Desenha as peças
