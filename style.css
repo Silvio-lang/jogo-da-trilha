@@ -110,7 +110,7 @@ h1 {
   width: 26px;
   height: 26px;
   background-color: #334155;
-  border: 3px solid #cbd5e1;
+  border: 3px solid #000000; /*#cbd5e1;*/
   border-radius: 50%;
   transform: translate(-50%, -50%);
   cursor: pointer;
