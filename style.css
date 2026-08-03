@@ -109,19 +109,26 @@ h1 {
   position: absolute;
   width: 26px;
   height: 26px;
-  background-color: #334155;
-  border: 3px solid #000000; /*#cbd5e1;*/
+  background-color: #1e293b; /* Fundo mais escuro para o ponto vazio sobressair menos */
+  border: 3px solid #555555; /* Contorno com a mesma cor da linha do tabuleiro */
   border-radius: 50%;
   transform: translate(-50%, -50%);
   cursor: pointer;
   z-index: 20;
   transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+  
+  /* Remove a sombra/caixa de seleção cinza ao tocar no celular */
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
 }
 
-.ponto:hover {
-  transform: translate(-50%, -50%) scale(1.3);
-  background-color: #38bdf8;
-  border-color: #ffffff;
+/* O efeito :hover só ativa em telas com mouse (evita travar no toque do celular) */
+@media (hover: hover) and (pointer: fine) {
+  .ponto:hover {
+    transform: translate(-50%, -50%) scale(1.3);
+    background-color: #38bdf8;
+    border-color: #555555;
+  }
 }
 
 /* Peças colocadas nas casas */
